@@ -147,7 +147,6 @@ ckanext.security.domain = 192.168.232.65          # Cookie domain
 ckanext.security.redis.host = 127.0.0.1
 ckanext.security.redis.port = 6379
 ckanext.security.redis.db = 1                     # ckan uses db 0
-ckanext.security.redis.ssl = True                 # If you have encryption in transit enabled on AWS Redis
 ckanext.security.redis.password = StrongPassword  # optional password for Redis
 
 # 15 minute timeout with 10 attempts
@@ -168,6 +167,13 @@ ckanext.security.enable_totp = true         # set to false to disable 2fa
 # Provide a help page to allow 2fa users to contact support or get more information
 # Shows up as 'Need help?' on the 2fa entry form beside the submit button. Does not display a link if none provided
 ckanext.security.mfa_help_link = https://data.govt.nz/catalogue-guide/releasing-data-on-data-govt-nz/how-do-i-set-up-two-factor-authentication/
+
+# If you're utilizing a cloud-based Redis cache solution, such as AWS ElastiCache, that implements encryption in transit, you may need to configure the following settings:
+ckanext.security.redis.ssl = True
+ckanext.security.redis.ssl_keyfile = '/path/to/your/redis/ssl/keyfile'
+ckanext.security.redis.ssl_certfile = '/path/to/your/redis/ssl/certfile'
+ckanext.security.redis.ssl_cert_reqs = CERT_REQUIRED
+ckanext.security.redis.ssl_ca_certs = '/path/to/your/redis/ssl/ca/certs'
 ```
 
 ## How to install?
